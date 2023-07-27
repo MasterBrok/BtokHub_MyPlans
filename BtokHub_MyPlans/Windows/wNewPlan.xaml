@@ -1,0 +1,210 @@
+﻿<Window x:Class="BtokHub_MyPlans.Windows.wNewPlan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BtokHub_MyPlans.Windows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        AllowsTransparency="True"
+        x:Name="wn"
+        xmlns:lbi="clr-namespace:BtokHub_MyPlans.BaseControls.ListBoxControl"
+        xmlns:button="clr-namespace:BtokHub_MyPlans.BaseControls.ButtonControls"
+        xmlns:txt="clr-namespace:BtokHub_MyPlans.BaseControls.TextBoxControls"
+        xmlns:vm="clr-namespace:BtokHub_MyPlans.BrokHub.BrokViewModels"
+        >
+    <Window.DataContext>
+        <vm:NewPlanViewModel/>
+    </Window.DataContext>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Height" Value="0"/>
+            <Setter Property="Width" Value="900"/>
+            <Setter Property="Margin" Value="0"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="Height"
+                                To="500"
+                                Duration="0:0:0:6"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
+    <Border
+        CornerRadius="40"
+        >
+        <Border.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="{StaticResource cgMenu}"
+                              Offset="0.5"
+                              />
+                <GradientStop Color="{StaticResource cgItem}"
+                              Offset="0.1"
+                              />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Border
+                BorderThickness="1"
+                Opacity="0.7"
+                BorderBrush="WhiteSmoke"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="30"
+                Padding="5"
+                CornerRadius="10"
+                >
+                <TextBlock VerticalAlignment="Top"
+                           FontFamily="{StaticResource Font}"
+                           FontStyle="Italic"
+                           FontSize="15"
+                           FontWeight="Light"
+                           >
+                    <Run Foreground="#E7DE27" Text="Telegram : "/>
+                    <Run Foreground="#E600FFFF" Text="@MasterBrok"/>
+                </TextBlock>
+            </Border>
+
+
+            <DockPanel LastChildFill="True"
+                       Margin="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                <DockPanel.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="VerticalAlignment" Value="Top"/>
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                        <Setter Property="Margin" Value="10"/>
+                    </Style>
+
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Null}"/>
+                        <Setter Property="FontFamily"
+                                Value="{DynamicResource Font}"/>
+                        <Setter Property="FontSize"
+                                Value="14"/>
+                        <Setter Property="FontWeight"
+                                Value="Thin"/>
+                    </Style>
+                    <Style TargetType="RadioButton">
+                        <Setter Property="Padding" Value="2"/>
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource Null}"/>
+                        <Setter Property="FontFamily"
+                                Value="{DynamicResource Font}"/>
+                        <Setter Property="FontSize"
+                                Value="14"/>
+                        <Setter Property="FontWeight"
+                                Value="Thin"/>
+                        <Setter Property="Background"
+                                Value="{DynamicResource fgUnSelectContent}"/>
+                    </Style>
+
+                </DockPanel.Resources>
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel>
+                        <Label Content="Title"/>
+                        <txt:ccTextBox Text="{Binding Plan.Title,UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Label Content="Current Time (hrs)"/>
+                        <txt:ccTextBox Text="{Binding Plan.Current,UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Label Content="Previous Tim (hrs)"/>
+                        <txt:ccTextBox Text="{Binding Plan.Previous,UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <RadioButton Content="Daily" Command="{Binding CmdDwm}" CommandParameter="Daily"/>
+                        <RadioButton Content="Weekly" Command="{Binding CmdDwm}" CommandParameter="Weekly"/>
+                        <RadioButton Content="Monthly" Command="{Binding CmdDwm}" CommandParameter="Monthly"/>
+                    </StackPanel>
+
+                    <!--<StackPanel>
+                    <button:ccMenuButton
+                    Margin="3"
+                    Width="70"
+                    HorizontalContentAlignment="Center"
+                    Background="{StaticResource bgMain}"
+                    Content="Brows"/>
+                    <Label
+                    VerticalContentAlignment="Center"
+                    Content="Path"
+                    />
+                    </StackPanel>-->
+
+                    <!--<StackPanel HorizontalAlignment="Left">
+                    <Ellipse
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    StrokeThickness="2"
+                    Stroke="{StaticResource bgProfile}"
+                    Width="120"
+                    Height="120"
+                    >
+                    <Ellipse.Fill>
+                    <ImageBrush
+                    Stretch="Uniform"
+                    ImageSource="C:\Users\ManTech\Desktop\Applications\My1.jpg"/>
+                    </Ellipse.Fill>
+                    </Ellipse>
+                    </StackPanel>-->
+
+                    <StackPanel>
+                        <button:ccMenuButton
+                            HorizontalContentAlignment="Center"
+                            Width="120"
+                            Background="{StaticResource bgMain}"
+                            Content="Add"
+                            Command="{Binding CmdAdd}"
+                            />
+                        <button:ccMenuButton
+                            HorizontalContentAlignment="Center"
+                            Width="120"
+                            Margin="3"
+                            Background="{StaticResource bgMain}"
+                            Content="Clear &amp; Update"
+                            Command="{Binding CmdClear}"
+                            />
+                    </StackPanel>
+
+                </StackPanel>
+            </DockPanel>
+
+            <Grid
+                Grid.Column="1"
+                >
+                <Grid.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#191C44" Offset="0.3"/>
+                        <GradientStop Color="#0D1323" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <lbi:ccListBoxItemPanel
+                    DataContext="{Binding Plan,
+                    NotifyOnSourceUpdated=True,
+                    Mode=TwoWay}"
+                    />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

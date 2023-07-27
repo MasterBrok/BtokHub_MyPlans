@@ -1,0 +1,117 @@
+﻿<Window x:Class="BtokHub_MyPlans.Windows.wHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BtokHub_MyPlans.Windows"
+        mc:Ignorable="d"
+
+        xmlns:button="clr-namespace:BtokHub_MyPlans.BaseControls.ButtonControls"
+        xmlns:listBox="clr-namespace:BtokHub_MyPlans.BaseControls.ListBoxControl"
+        xmlns:vm="clr-namespace:BtokHub_MyPlans.BrokHub.BrokViewModels"
+
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="700"
+        Width="1350"
+        >
+    <Window.DataContext>
+        <vm:HomeViewModel/>
+    </Window.DataContext>
+    <Border
+        Background="{StaticResource bgMain}"
+        >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="0"
+                Margin="20 10"
+                CornerRadius="10"
+                Background="{StaticResource bgMenu}">
+                <StackPanel
+                    Orientation="Vertical">
+                    <Border
+                        Height="450"
+                        CornerRadius="20"
+                        Background="{StaticResource bgProfile}"
+                        >
+                        <Grid
+                            >
+
+                            <Ellipse
+                                Margin="30 50"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                StrokeThickness="2"
+                                Stroke="White"
+                                Width="120"
+                                Height="120"
+                                >
+                                <Ellipse.Fill>
+                                    <ImageBrush
+                                        Stretch="Uniform"
+                                        ImageSource="\Resources\Images\MasterBrok.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <StackPanel
+                                Margin="30 100 0 0"
+                                VerticalAlignment="Center"
+                                >
+                                <Label Foreground="WhiteSmoke"
+                                       FontFamily="{StaticResource Font}"
+                                       Opacity=".5"
+                                       FontSize="15"
+                                       Content="Report For"
+                                       />
+                                <TextBlock
+                                    Foreground="White"
+                                    FontSize="38"
+                                    FontFamily="{StaticResource Font}"
+                                    TextWrapping="Wrap"
+                                    Text="Behrouz Sabeti (Brok)"/>
+                            </StackPanel>
+
+
+
+                        </Grid>
+                    </Border>
+                    <StackPanel
+                        Margin="30 50 10 0"
+                        >
+                        <button:ccMenuButton
+                            Command="{Binding CmdSelectMenu}"
+                            CommandParameter="Daily"
+                            Content="Daily"
+                            />
+                        <button:ccMenuButton
+                            Content="Weekly"
+                            Command="{Binding CmdSelectMenu}"
+                            CommandParameter="Weekly"
+                            />
+                        <button:ccMenuButton
+                            Content="Monthly"
+                            Command="{Binding CmdSelectMenu}"
+                            CommandParameter="Monthly"
+                            />
+                        <button:ccMenuButton
+                            Content="New Plan"
+                            Command="{Binding CmdOpen}"
+                            CommandParameter="Monthly"
+                            />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <listBox:ccListBoxPanel
+                Grid.Column="1"
+                ItemsSource="{Binding DynamicPlan}"
+                >
+            </listBox:ccListBoxPanel>
+        </Grid>
+    </Border>
+</Window>

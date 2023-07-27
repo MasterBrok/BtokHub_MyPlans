@@ -1,0 +1,103 @@
+﻿<Application x:Class="BtokHub_MyPlans.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BtokHub_MyPlans"
+             xmlns:model="clr-namespace:BtokHub_MyPlans.BrokHub.BrokModels"
+             StartupUri="Windows/wHome.xaml"
+             >
+    <Application.Resources>
+        <!--Telegram : @BrokDotNet-->
+        <ResourceDictionary>
+            <Style TargetType="{x:Type ListBoxItem}" xmlns:listbxoitem="clr-namespace:BtokHub_MyPlans.BaseControls.ListBoxControl">
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="Width" Value="297"/>
+                <Setter Property="Height" Value="310"/>
+                <Setter Property="DataContext" Value="{x:Type model:Plan}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Grid Background="Transparent">
+                                <Grid.Resources>
+
+                                    <Style TargetType="Label">
+                                        <Setter Property="FontFamily" Value="{DynamicResource Font}"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                        <Setter Property="Foreground" Value="White"/>
+
+                                    </Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontFamily" Value="{DynamicResource Font}"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                        <Setter Property="Foreground" Value="White"/>
+
+                                    </Style>
+                                    <Style TargetType="Run">
+                                        <Setter Property="FontFamily" Value="{DynamicResource Font}"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Style>
+                                </Grid.Resources>
+                                <Border
+                                    Background="{Binding PlanSetting.Color}"
+                                    CornerRadius="20"
+                                    >
+                                </Border>
+                                <Path Stretch="Uniform"
+                                      Width="60"
+                                      Height="60"
+                                      Data="{Binding PlanSetting.Icon}"
+                                      Fill="White"
+                                      Stroke="White"
+                                      StrokeThickness="2"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Right"
+                                      Opacity="0.4"
+                                      Margin="3 0 10 6"
+                                      />
+                                <Border
+                                    x:Name="brdContent"
+                                    Background="{DynamicResource bgMenu}"
+                                    Height="260"
+                                    CornerRadius="15"
+                                    VerticalAlignment="Bottom"
+                                    >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="30">
+                                            <Label Content="{Binding Title}" FontWeight="Normal" FontSize="20"/>
+                                        </StackPanel>
+                                        <StackPanel Margin="30 0 25 0">
+                                            <TextBlock Text="{Binding Current,StringFormat={}{0}hrs}" FontSize="70" FontWeight="Thin" />
+                                        </StackPanel>
+                                        <StackPanel Margin="40">
+                                            <TextBlock Opacity="0.5">
+                                                <Run Text="Last"/>
+                                                <Run Text="{Binding Dwm}"/>
+                                                <Run Text=" - "/>
+                                                <Run Text="{Binding Previous}"/>
+                                                <Run Text="hrs"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="brdContent" Property="Background" Value="{DynamicResource bgIsMouseOverItem}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="brdContent" Property="Background" Value="{DynamicResource bgIsMouseOverItem}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Colors/RsColors.xaml"/>
+                <ResourceDictionary Source="Resources/Fonts/RsFonts.xaml"/>
+                <ResourceDictionary Source="Path/Svgs.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

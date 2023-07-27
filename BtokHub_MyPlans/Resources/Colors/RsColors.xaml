@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="bgProfile" Color="#5746EA"/>
+    <SolidColorBrush x:Key="bgMenu" Color="#1D204B"/>
+    <SolidColorBrush x:Key="bgItem" Color="#1D204B"/>
+    <SolidColorBrush x:Key="bgIsMouseOverItem" Color="#34397B"/>
+    <SolidColorBrush x:Key="bgMain" Color="#0D1323"/>
+
+
+    <Color x:Key="cgMenu" >#1D204B</Color>
+    <Color x:Key="cgItem" >#0D1323</Color>
+
+
+
+
+    <SolidColorBrush x:Key="bgItem1" Color="#FF8B64"/>
+    <SolidColorBrush x:Key="bgItem2" Color="#56C2E6"/>
+    <SolidColorBrush x:Key="bgItem3" Color="#FF5E7D"/>
+    <SolidColorBrush x:Key="bgItem4" Color="#4BCF83"/>
+    <SolidColorBrush x:Key="bgItem5" Color="#7235D1"/>
+    <SolidColorBrush x:Key="bgItem6" Color="#F1C75B"/>
+
+    <SolidColorBrush x:Key="Null" Color="#6DB1B3"/>
+
+
+    <SolidColorBrush x:Key="fgSelectContent" Color="#F8F6FE"/>
+    <SolidColorBrush x:Key="fgUnSelectContent" Color="#555996"/>
+
+</ResourceDictionary>
